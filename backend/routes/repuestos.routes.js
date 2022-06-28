@@ -5,14 +5,16 @@ const {
   actualizarRepuesto,
   eliminarRepuesto,
 } = require("../controllers/repuestos.controller");
+const auth = require("../middlewares/auth");
+
 const router = express.Router();
 
-router.get("/", getRepuestos);
+router.get("/", auth, getRepuestos);
 
-router.post("/", nuevoRepuesto);
+router.post("/", auth, nuevoRepuesto);
 
-router.patch("/:id", actualizarRepuesto);
+router.patch("/:id", auth, actualizarRepuesto);
 
-router.delete("/:id", eliminarRepuesto);
+router.delete("/:id", auth, eliminarRepuesto);
 
 module.exports = router;
