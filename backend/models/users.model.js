@@ -17,6 +17,10 @@ const UserSchema = Schema({
     type: String,
     require: true,
   },
+  provincia: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     required: true,

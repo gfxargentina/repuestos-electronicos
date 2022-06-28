@@ -11,6 +11,7 @@ const signup = async (req, res) => {
     domicilio,
     ciudad,
     email,
+    provincia,
     confirmPassword,
     password,
   } = req.body;
@@ -34,6 +35,7 @@ const signup = async (req, res) => {
       email,
       domicilio,
       ciudad,
+      provincia,
       password: hashedPassword,
     });
 
