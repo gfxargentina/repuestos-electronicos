@@ -42,9 +42,9 @@ function signUpSchema(req, res, next) {
   });
 
   const options = {
-    abortEarly: false, // include all errors
-    allowUnknown: true, // ignore unknown props
-    stripUnknown: true, // remove unknown props
+    abortEarly: false,
+    allowUnknown: true,
+    stripUnknown: true,
   };
 
   const { error, value } = signupSchema.validate(req.body, options);
@@ -57,7 +57,33 @@ function signUpSchema(req, res, next) {
   }
 }
 
+function repuestoSchema(req, res, next) {
+  const repuestoSchema = Joi.object({
+    repuesto: Joi.string().required(),
+    modelo: Joi.string().required(),
+    categoria: Joi.string().required(),
+    descripcion: Joi.string().required(),
+    vendido: Joi.boolean().required(),
+  });
+
+  const options = {
+    abortEarly: false,
+    allowUnknown: true,
+    stripUnknown: true,
+  };
+
+  const { error, value } = repuestoSchema.validate(req.body, options);
+
+  if (error) {
+    next(`Validation error: ${error.details.map((x) => x.message).join(", ")}`);
+  } else {
+    req.body = value;
+    next();
+  }
+}
+
 module.exports = {
   signInSchema,
   signUpSchema,
+  repuestoSchema,
 };
