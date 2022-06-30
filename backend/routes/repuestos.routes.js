@@ -14,7 +14,7 @@ router.get("/", auth, getRepuestos);
 
 router.post("/", auth, repuestoSchema, nuevoRepuesto);
 
-router.patch("/:id", actualizarRepuesto);
+router.patch("/:id", auth, actualizarRepuesto);
 
 router.delete("/:id", eliminarRepuesto);
 
