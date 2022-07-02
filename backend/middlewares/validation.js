@@ -60,10 +60,11 @@ function signUpSchema(req, res, next) {
 function repuestoSchema(req, res, next) {
   const repuestoSchema = Joi.object({
     repuesto: Joi.string().required(),
+    //imagen: Joi.string().required(),
     modelo: Joi.string().required(),
     categoria: Joi.string().required(),
     descripcion: Joi.string().required(),
-    vendido: Joi.boolean().required(),
+    vendido: Joi.boolean(),
   });
 
   const options = {

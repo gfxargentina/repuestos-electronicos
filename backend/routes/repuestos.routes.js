@@ -7,15 +7,16 @@ const {
 } = require("../controllers/repuestos.controller");
 const auth = require("../middlewares/auth");
 const { repuestoSchema } = require("../middlewares/validation");
+const upload = require("../utils/multer");
 
 const router = express.Router();
 
 router.get("/", auth, getRepuestos);
 
-router.post("/", auth, repuestoSchema, nuevoRepuesto);
+router.post("/", auth, upload.single("imagen"), repuestoSchema, nuevoRepuesto);
 
 router.patch("/:id", auth, actualizarRepuesto);
 
-router.delete("/:id", eliminarRepuesto);
+router.delete("/:id", auth, eliminarRepuesto);
 
 module.exports = router;
