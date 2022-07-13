@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Hero from "../components/Hero";
 import Categories from "../sections/Categories";
+import LastParts from "../sections/LastParts";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
     <div>
       <Hero />
       <Categories />
+      <LastParts />
     </div>
   );
 }
