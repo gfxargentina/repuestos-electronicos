@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
@@ -56,7 +57,11 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <Link href="/">
+            <a className="btn btn-ghost normal-case text-xl">
+              Repuestos Electronicos
+            </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
