@@ -1,8 +1,8 @@
-const multer = require("multer");
+const multer = require('multer');
 
 //modulo path para manejar las rutas tanto relativas como absolutas de nuestra PC
 // y de nuestro proyecto
-const path = require("path");
+const path = require('path');
 
 //multer config
 module.exports = multer({
@@ -16,11 +16,11 @@ module.exports = multer({
 
     // La función debe llamar a `cb` usando una variable del tipo boolean
     // para indicar si el archivo debería ser aceptado o no
-    if (ext !== ".jpg" && ext !== ".jpeg" && ext !== ".png") {
+    if (ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png') {
       // Para rechazar el archivo es necesario pasar `false`, de la siguiente forma:
       cb(
         new Error(
-          "El formato de arhivo para la imagen no esta soportado, tiene que subir una imagen con extension jpg, jpeg o png"
+          'El formato de arhivo para la imagen no esta soportado, tiene que subir una imagen con extension jpg, jpeg o png'
         ),
         false
       );
