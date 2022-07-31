@@ -11,7 +11,7 @@ const upload = require('../utils/multer');
 
 const router = express.Router();
 
-router.get('/', getRepuestos);
+router.get('/', auth, getRepuestos);
 
 router.post('/', auth, upload.single('imagen'), repuestoSchema, nuevoRepuesto);
 
