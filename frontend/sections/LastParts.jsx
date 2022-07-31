@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PartsCard from '../components/PartsCard';
 import { useDispatch } from 'react-redux';
-import { getRepuestos } from '../store/actions';
+import { getRepuestos } from '../store/repuestosActions';
 import { useSelector } from 'react-redux';
 
 const data = [
