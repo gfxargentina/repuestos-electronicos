@@ -1,6 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { signin } from '../store/authActions';
+
+const initialstate = { email: '', password: '' };
 
 const Login = () => {
+  const dispatch = useDispatch();
+
+  const [formData, setFormData] = useState(initialstate);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(signin(formData));
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <>
       <div className="container mx-auto m-10">
@@ -38,6 +56,7 @@ const Login = () => {
                       type="email"
                       name="email"
                       placeholder="Email"
+                      onChange={handleChange}
                       className="bg-gray-100 border-transparent rounded-lg focus:border-gray-100 focus:ring-0  text-sm flex-1 "
                     />
                   </div>
@@ -47,6 +66,7 @@ const Login = () => {
                       type="password"
                       name="password"
                       placeholder="Su contraseña"
+                      onChange={handleChange}
                       className="bg-gray-100 border-transparent rounded-lg focus:border-gray-100 focus:ring-0  text-sm flex-1 "
                     />
                   </div>
@@ -58,6 +78,7 @@ const Login = () => {
 
                   <a
                     href=""
+                    onClick={handleSubmit}
                     className="border-2 border-green-500 text-green-500 mt-10 rounded-full px-12 py-2 inline-block font-semibold hover:bg-green-500 hover:text-white"
                   >
                     Inicia Sesion
