@@ -1,5 +1,5 @@
-const Repuestos = require("../models/repuestos.model");
-const cloudinary = require("../utils/cloudinary");
+const Repuestos = require('../models/repuestos.model');
+const cloudinary = require('../utils/cloudinary');
 
 const getRepuestos = async (req, res) => {
   try {
@@ -18,13 +18,13 @@ const nuevoRepuesto = async (req, res) => {
 
   //si no se agrega un archivo tira un error
   if (!req.file) {
-    return res.send("Porfavor seleccione una imagen para subir");
+    return res.send('Porfavor seleccione una imagen para subir');
   }
 
   try {
     //se sube el archivo a cloudinary que viene por el request.file
     const cloudinary_image = await cloudinary.uploader.upload(req.file.path, {
-      folder: "repuestos",
+      folder: 'repuestos',
     });
 
     //crea una nueva instancia Repuestos
@@ -58,13 +58,13 @@ const actualizarRepuesto = async (req, res) => {
     const repuesto = await Repuestos.findById(repuestoId);
 
     if (!repuesto) {
-      return res.status(404).json({ msg: "No existe el repuesto con ese id" });
+      return res.status(404).json({ msg: 'No existe el repuesto con ese id' });
     }
 
     if (repuesto.usuario !== usuario) {
       return res
         .status(401)
-        .json({ msg: "No esta autorizado a editar este repuesto" });
+        .json({ msg: 'No esta autorizado a editar este repuesto' });
     }
 
     const repuestoEditado = req.body;
@@ -79,7 +79,7 @@ const actualizarRepuesto = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      msg: "Hubo un problema para actualizar, hable con el administrador",
+      msg: 'Hubo un problema para actualizar, hable con el administrador',
     });
   }
 };
@@ -95,22 +95,22 @@ const eliminarRepuesto = async (req, res) => {
     if (!repuesto) {
       return res
         .status(404)
-        .json({ msg: "No existe ningun repuesto con ese id" });
+        .json({ msg: 'No existe ningun repuesto con ese id' });
     }
 
     if (repuesto.usuario !== usuario) {
       return res
         .status(401)
-        .json({ msg: "No esta autorizado a eliminar este repuesto" });
+        .json({ msg: 'No esta autorizado a eliminar este repuesto' });
     }
 
     await Repuestos.findByIdAndDelete(repuestoId);
 
-    res.json({ msg: "El repuesto fue eliminado correctamente" });
+    res.json({ msg: 'El repuesto fue eliminado correctamente' });
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      msg: "Hubo un problema tratando de eliminar el repuesto, comuniquese con el administrador",
+      msg: 'Hubo un problema tratando de eliminar el repuesto, comuniquese con el administrador',
     });
   }
 };
