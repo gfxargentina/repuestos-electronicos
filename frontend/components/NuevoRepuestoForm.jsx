@@ -1,9 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
-import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux';
 import { createRepuesto } from '../store/repuestosActions';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 
 const NuevoRepuestoForm = () => {
   const dispatch = useDispatch();
@@ -11,7 +10,6 @@ const NuevoRepuestoForm = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     const formData = new FormData();
     formData.append('usuario', data.usuario);
     formData.append('repuesto', data.repuesto);
@@ -74,6 +72,7 @@ const NuevoRepuestoForm = () => {
                       <div className="mt-1 flex rounded-md shadow-sm">
                         <input
                           {...register('repuesto')}
+                          required
                           type="text"
                           name="repuesto"
                           className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
@@ -92,6 +91,7 @@ const NuevoRepuestoForm = () => {
                       <div className="mt-1 flex rounded-md shadow-sm">
                         <input
                           {...register('modelo')}
+                          required
                           type="text"
                           name="modelo"
                           className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
@@ -110,6 +110,7 @@ const NuevoRepuestoForm = () => {
                       <div className="mt-1 flex rounded-md shadow-sm">
                         <input
                           {...register('categoria')}
+                          required
                           type="text"
                           name="categoria"
                           className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
@@ -129,6 +130,7 @@ const NuevoRepuestoForm = () => {
                     <div className="mt-1">
                       <textarea
                         {...register('descripcion')}
+                        required
                         id="descripcion"
                         name="descripcion"
                         rows="3"
@@ -169,8 +171,10 @@ const NuevoRepuestoForm = () => {
                             <span>Subir una imagen</span>
                             <input
                               {...register('imagen')}
+                              required
                               type="file"
                               name="imagen"
+                              //accept="image/jpeg"
                             />
                           </label>
                           <p className="pl-1">or drag and drop</p>
